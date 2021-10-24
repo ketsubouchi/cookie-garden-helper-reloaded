@@ -1,0 +1,49 @@
+Automatic plot setting for seed complete and some fix
+
+You turn "Auto plot" button on, wait, change setting, wait, and you will complete seeds!
+Warning 1: Recommend to turn on with auto clicker or auto GC tool.
+Total seed cost exceeds million CPS.
+
+Warning 2: You should unlock JQB and Duketator by manual savescumming.
+These steps take very long time.
+
+全自動種子コンプ機能と修正
+
+Auto plotボタンを押してしばらく待ち、設定を変更してまた待つだけで、種子をコンプできる…はずです。
+注意：オートクリッカーか自動GCクリックと併用することをお勧めします
+種子の総コストが100万CPSを超えるためです
+実際に使う際は、JQBとDuketatorをリセマラで獲得することをお勧めします
+
+First stage (weed, brown mold, cromsphore) setting
+雑草とカビ2種を取得するまでの設定
+ Avoid immortal = OFF
+ New Seeds = ON
+ Mature Seeds = ON
+ Check CPS mature = OFF
+
+ Remove weeds = OFF
+ Clean Garden = OFF
+ Dying plants = ON
+ Check CPS dying = OFF
+
+ Avoid buffs = ON
+ Rotate soil = OFF (fixed to fertilizer)
+ Check CPS plant = OFF
+ auto plot = ON
+
+Second stage (After unlock cromsphore) setting
+雑草とカビ2種を取得した後の設定
+ Avoid immortal = OFF
+ New Seeds = ON
+ Mature Seeds = ON -> OFF
+ Check CPS mature = OFF
+
+ Remove weeds = OFF -> ON
+ Clean Garden = OFF -> ON
+ Dying plants = ON
+ Check CPS dying = OFF
+
+ Avoid buffs = ON
+ Rotate soil = OFF (fixed to fertilizer) -> ON (fert/wood)
+ Check CPS plant = OFF
+ auto plot = ON

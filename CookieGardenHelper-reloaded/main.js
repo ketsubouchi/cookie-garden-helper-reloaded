@@ -422,6 +422,13 @@ Game.registerMod("cookiegardenhelperreloaded",{
 					)}
 				  </p>
 				  -->
+				  <p>
+					${this.button(
+					  'autoPlot', 'auto plot',
+					  'Set plot automatically', true,
+					  this.config.autoPlot
+					)}
+				  </p>
 				</div>
 				<div class="cookieGardenHelperReloadedPanel" id="manualToolsPanel">
 				  <h2>Manual tools</h2>
@@ -630,7 +637,16 @@ Game.registerMod("cookiegardenhelperreloaded",{
 		var l = Game.Objects['Farm'].level
 		var p1 = parents[0]+1
 		var p2 = (parents.length>1?parents[1]:parents[0])+1;
-		if(l>=8){
+		if(l>=9){
+			return [
+				[[p1,0],[p1,0],[p1,0],[p1,0],[p1,0],[p1,0]],
+				[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
+				[[p2,0],[p2,0],[p2,0],[p2,0],[p2,0],[p2,0]],
+				[[p2,0],[p2,0],[p2,0],[p2,0],[p2,0],[p2,0]],
+				[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
+				[[p1,0],[p1,0],[p1,0],[p1,0],[p1,0],[p1,0]]
+			];
+		}else if(l>=8){
 			return [
 				[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
 				[[p1,0],[p1,0],[p1,0],[p1,0],[p1,0],[p1,0]],
@@ -700,45 +716,41 @@ Game.registerMod("cookiegardenhelperreloaded",{
 			}
 			return this.emptyPlot();
 		}
-		//Golden clover
-		if(seedId==6){
+		//Golden clover, Shriekbulb, molds
+		if(seedId==6 || seedId==31 || seedId==13 || seedId==24){
+			var m5 = m[0] + 1;
 			if(l>=9){
-				return [[[5,0],[5,0],[0,0],[5,0],[0,0],[5,0]],[[0,0],[5,0],[0,0],[5,0],[0,0],[5,0]],[[5,0],[0,0],[0,0],[5,0],[0,0],[5,0]],[[5,0],[0,0],[5,0],[0,0],[0,0],[5,0]],[[5,0],[0,0],[5,0],[0,0],[5,0],[0,0]],[[5,0],[0,0],[5,0],[0,0],[5,0],[5,0]]];
+				return [[[m5,0],[m5,0],[0,0],[m5,0],[0,0],[m5,0]],[[0,0],[m5,0],[0,0],[m5,0],[0,0],[m5,0]],[[m5,0],[0,0],[0,0],[m5,0],[0,0],[m5,0]],[[m5,0],[0,0],[m5,0],[0,0],[0,0],[m5,0]],[[m5,0],[0,0],[m5,0],[0,0],[m5,0],[0,0]],[[m5,0],[0,0],[m5,0],[0,0],[m5,0],[m5,0]]];
 			}
 			else if(l>=8){
-				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[5,0],[0,0],[5,0],[0,0],[0,0],[5,0]],[[5,0],[0,0],[5,0],[5,0],[5,0],[5,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[5,0],[0,0],[5,0],[5,0],[5,0],[5,0]],[[5,0],[0,0],[5,0],[0,0],[0,0],[5,0]]];
+				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[m5,0],[0,0],[m5,0],[0,0],[0,0],[m5,0]],[[m5,0],[0,0],[m5,0],[m5,0],[m5,0],[m5,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[m5,0],[0,0],[m5,0],[m5,0],[m5,0],[m5,0]],[[m5,0],[0,0],[m5,0],[0,0],[0,0],[m5,0]]];
 			}
 			else if(l>=7){
-				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[5,0],[0,0],[5,0],[0,0],[5,0]],[[0,0],[5,0],[0,0],[5,0],[0,0],[5,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[5,0],[0,0],[5,0],[0,0],[5,0]],[[0,0],[5,0],[0,0],[5,0],[0,0],[5,0]]];
+				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[m5,0],[0,0],[m5,0],[0,0],[m5,0]],[[0,0],[m5,0],[0,0],[m5,0],[0,0],[m5,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[m5,0],[0,0],[m5,0],[0,0],[m5,0]],[[0,0],[m5,0],[0,0],[m5,0],[0,0],[m5,0]]];
 			}
 			else if(l>=6){
-				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[5,0],[5,0],[0,0],[5,0],[5,0]],[[0,0],[0,0],[5,0],[0,0],[5,0],[0,0]],[[0,0],[0,0],[5,0],[0,0],[5,0],[0,0]],[[0,0],[5,0],[5,0],[0,0],[5,0],[5,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]];
+				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[m5,0],[m5,0],[0,0],[m5,0],[m5,0]],[[0,0],[0,0],[m5,0],[0,0],[m5,0],[0,0]],[[0,0],[0,0],[m5,0],[0,0],[m5,0],[0,0]],[[0,0],[m5,0],[m5,0],[0,0],[m5,0],[m5,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]];
 			}
 			else if(l>=5){
-				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[5,0],[0,0],[5,0],[5,0],[0,0]],[[0,0],[5,0],[0,0],[5,0],[0,0],[0,0]],[[0,0],[5,0],[0,0],[5,0],[0,0],[0,0]],[[0,0],[5,0],[0,0],[5,0],[5,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]];
+				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[m5,0],[0,0],[m5,0],[m5,0],[0,0]],[[0,0],[m5,0],[0,0],[m5,0],[0,0],[0,0]],[[0,0],[m5,0],[0,0],[m5,0],[0,0],[0,0]],[[0,0],[m5,0],[0,0],[m5,0],[m5,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]];
 			}
 			else if(l>=4){
-				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[5,0],[0,0],[5,0],[5,0],[0,0]],[[0,0],[5,0],[0,0],[5,0],[0,0],[0,0]],[[0,0],[5,0],[0,0],[5,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]];
+				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[m5,0],[0,0],[m5,0],[m5,0],[0,0]],[[0,0],[m5,0],[0,0],[m5,0],[0,0],[0,0]],[[0,0],[m5,0],[0,0],[m5,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]];
 			}
 			else if(l>=3){
-				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[5,0],[0,0],[5,0],[0,0]],[[0,0],[0,0],[5,0],[0,0],[5,0],[0,0]],[[0,0],[0,0],[5,0],[0,0],[5,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]];
+				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[m5,0],[0,0],[m5,0],[0,0]],[[0,0],[0,0],[m5,0],[0,0],[m5,0],[0,0]],[[0,0],[0,0],[m5,0],[0,0],[m5,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]];
 			}
 			else if(l>=2){
-				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[5,0],[0,0],[5,0],[0,0]],[[0,0],[0,0],[5,0],[0,0],[5,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]];
+				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[m5,0],[0,0],[m5,0],[0,0]],[[0,0],[0,0],[m5,0],[0,0],[m5,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]];
 			}
 			else if(l>=1){
-				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[5,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[5,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]];
+				return [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[m5,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[m5,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]];
 			}
 			return this.emptyPlot();
 		}
-		//Shriekbulb && Everdaisy : Horizontal Lines
-		if((seedId==31 && l>=3) || seedId==33){
+		//Everdaisy : Horizontal Lines
+		if(seedId==33){
 			return this.horizontalPlots(m);
-		}
-		//Alternative parents
-		//Shriekbulb for level 1-2
-		if(seedId==31 && l<=2){
-			m=[29,8];
 		}
 		
 		let plot = this.clone(this.minigame().plot);
@@ -752,7 +764,7 @@ Game.registerMod("cookiegardenhelperreloaded",{
 	},
 	isSeedUnlocked:function(seedId) { return this.getPlant(seedId).unlocked==1; },
 	getPlantParents:function(seedId) {
-		var mutations = [[0],[0],[0,1],[1,2],[0,3],[4],[4,3],[2,6],[0],[0,12],[9,11],[12],[13],[],[6,10],[6,14],[14],[9,19],[2,11],[29,12],[8,9],[20],[20],[13],[23],[23,1],[23,6],[24,29],[23,12],[11,4],[7],[0,10],[31,7],[7,23]];
+		var mutations = [[0],[0],[0,1],[1,2],[0,3],[4],[4,3],[2,6],[0],[0,12],[9,11],[12],[13],[],[6,10],[6,14],[14],[9,19],[2,19],[29,12],[8,9],[20],[20],[13],[23],[23,1],[23,6],[24,29],[23,12],[4,11],[22],[0,10],[31,7],[7,23]];
 		return mutations[seedId-1];
 	},
 	
@@ -812,13 +824,7 @@ Game.registerMod("cookiegardenhelperreloaded",{
 		}
 	},
 	CpSMult:function(){
-		var res = 1
-		for (let key in Game.buffs) {
-			if (typeof Game.buffs[key].multCpS != 'undefined') {
-				res *= Game.buffs[key].multCpS;
-			}
-		}
-		return res;
+		return Game.cookiesPs / Game.cookiesPsRaw;
 	},
 	secondsBeforeNextTick:function(){ return (this.minigame().nextStep-Date.now()) / 1000; },
 	selectedSeed:function(){ return this.minigame().seedSelected; },
@@ -887,7 +893,7 @@ Game.registerMod("cookiegardenhelperreloaded",{
 		if(this.config.savedPlot.length>0){
 			let [seedId, age] = this.config.savedPlot[y][x];
 			seedId--;
-			if ( this.config.autoHarvestCleanGarden && ((plant.unlocked && seedId == -1) || (seedId > -1 && seedId != plant.id)) ) {
+			if ( this.config.autoHarvestCleanGarden && plant.unlocked && ( seedId != plant.id) ) {
 				this.harvest(x, y);
 			}
 		}
@@ -900,13 +906,24 @@ Game.registerMod("cookiegardenhelperreloaded",{
 		}else if(this.config.autoHarvestMatured){
 		  this.harvest(x, y);
 		}
+		if(this.config.autoPlot && this.config.savedPlot.length>0){
+			let [seedId, age] = this.config.savedPlot[y][x];
+			seedId--;
+			if ( this.config.autoHarvestCleanGarden &&  (seedId != plant.id) ) {
+				this.harvest(x, y);
+			}
+		}
 	},
 	handleDying:function(plant, x, y){
 		if(!this.isExplodable(plant)){
 			if (this.isCpsBonus(plant) && this.config.autoHarvestCheckCpSMultDying && this.CpSMult() >= this.config.autoHarvestMiniCpSMultDying.value) {
 			this.harvest(x, y);
 			} else if (this.config.autoHarvestDying && this.secondsBeforeNextTick() <= this.config.autoHarvestDyingSeconds) {
-			this.harvest(x, y);
+				if(this.config.autoPlot) {
+					this.minigame().harvestAll(plant);
+				}else{
+					this.harvest(x, y);
+				}
 			}
 		}
 	},
@@ -920,10 +937,30 @@ Game.registerMod("cookiegardenhelperreloaded",{
 		var cpsbonus = ["bakeberry","chocoroot","whiteChocoroot","queenbeet","duketater"];
 		return cpsbonus.includes(plant.key);
 	},
-	getBuffMultCps:function(){
-		var mult = 1;
-		for (var b in Game.buffs){if(Game.buffs[b].hasOwnProperty('multCpS')){mult*=Game.buffs[b].multCpS;}}
-		return mult;
+	setPlot:function() {
+		var arr = [14, 13, 24, 10, 2, 9, 3, 21, 22, 23, 12, 4, 5, 7, 30, 11, 20, 18, 8, 19, 32, 15, 17, 16, 33, 34, 29, 26, 27, 25, 28, 31, 6];
+		this.config.savedPlot=this.buildMutationPlotData(14);
+		for( var i=0 ; i < arr.length; i++){
+			if(this.getPlant(arr[i]).unlocked) {
+				continue;
+			}
+			var eflag = false;
+			for (let x=0; x<6; x++) {
+				for (let y=0; y<6; y++) {
+					if (this.getTile(x, y).seedId == arr[i]) {
+						eflag = true;
+					}
+				}
+			}
+			if ((arr[i] != 24) && eflag) {
+				continue;
+			}
+			if(this.parentsUnlocked(arr[i])) {
+				this.config.savedPlot=this.buildMutationPlotData(arr[i]);
+			}
+			break;
+		}
+		return;
 	},
 	run:function() {
 		if(this.isActive()){
@@ -931,6 +968,9 @@ Game.registerMod("cookiegardenhelperreloaded",{
 			this.doc.elId('cghrSeedListDiv').textContent = '';
 			this.doc.elId('cghrSeedListDiv').innerHTML = this.getSeedListDisplay();
 			this.setSeedListTooltips();
+			if(this.config.autoPlot){
+				this.setPlot();
+			}
 
 			//Display Upgrades
 			this.doc.elId('cghrUpgradeListDiv').textContent = '';
@@ -976,7 +1016,7 @@ Game.registerMod("cookiegardenhelperreloaded",{
 
 			  if (this.config.autoPlant &&
 					(!this.config.autoPlantCheckCpSMult || this.CpSMult() <= this.config.autoPlantMaxiCpSMult.value) &&
-					(!this.config.autoPlantAvoidBuffs || this.getBuffMultCps()<=1) &&
+					(!this.config.autoPlantAvoidBuffs || this.CpSMult()<=1) &&
 				  	this.tileIsEmpty(x, y) &&
 				  	this.config.savedPlot.length > 0
 				) {
@@ -1023,6 +1063,7 @@ Game.registerMod("cookiegardenhelperreloaded",{
 			autoPlantCheckCpSMult: false,
 			autoPlantMaxiCpSMult: { value: 0, min: 0 },
 			autoForceTicks: false,
+			autoPlot: false,
 			savedPlot: [],
 		}
 		return data;

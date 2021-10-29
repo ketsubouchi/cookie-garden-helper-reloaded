@@ -938,25 +938,53 @@ Game.registerMod("cookiegardenhelperreloaded",{
 		return cpsbonus.includes(plant.key);
 	},
 	setPlot:function() {
-		var arr = [14, 13, 24, 10, 2, 9, 3, 21, 22, 23, 12, 4, 5, 7, 30, 11, 20, 18, 8, 19, 32, 15, 17, 16, 33, 34, 29, 26, 27, 25, 28, 31, 6];
+		var stage1 = [14, 13, 24];
+		var sflag = false;
+		for( var i=0 ; i < stage1.length; i++){
+			if(!this.getPlant(stage1[i]).unlocked) {
+				sflag = true;
+				break;
+			}
+		}
+		this.config.autoHarvestAvoidImmortals = false;
+		this.config.autoHarvestNewSeeds = true;
+		this.config.autoHarvestCheckCpSMult = false;
+		this.config.autoHarvestDying = true;
+		this.config.autoHarvestCheckCpSMultDying = false;
+		this.config.autoPlantAvoidBuffs = true;
+		this.config.autoPlantCheckCpSMult = false;
+		if(sflag) {
+			this.config.autoHarvestMatured = true;
+			this.config.autoHarvestWeeds = false;
+			this.config.autoHarvestCleanGarden = false;
+			this.config.autoPlantRotateSoil = false;
+			//autoPlantRotateSoilCombo: 0,
+		}else{
+			this.config.autoHarvestMatured = false;
+			this.config.autoHarvestWeeds = true;
+			this.config.autoHarvestCleanGarden = true;
+			this.config.autoPlantRotateSoil = true;
+			this.config.autoPlantRotateSoilCombo = 1;
+		}
+		var seeds = [14, 13, 24, 10, 2, 9, 3, 21, 22, 23, 12, 4, 5, 7, 30, 11, 20, 18, 8, 19, 32, 15, 17, 16, 33, 34, 29, 26, 27, 25, 28, 31, 6];
 		this.config.savedPlot=this.buildMutationPlotData(14);
-		for( var i=0 ; i < arr.length; i++){
-			if(this.getPlant(arr[i]).unlocked) {
+		for( var i=0 ; i < seeds.length; i++){
+			if(this.getPlant(seeds[i]).unlocked) {
 				continue;
 			}
 			var eflag = false;
 			for (let x=0; x<6; x++) {
 				for (let y=0; y<6; y++) {
-					if (this.getTile(x, y).seedId == arr[i]) {
+					if (this.getTile(x, y).seedId == seeds[i]) {
 						eflag = true;
 					}
 				}
 			}
-			if ((arr[i] != 24) && eflag) {
+			if ((seeds[i] != 24) && (seeds[i] != 34) && eflag) {
 				continue;
 			}
-			if(this.parentsUnlocked(arr[i])) {
-				this.config.savedPlot=this.buildMutationPlotData(arr[i]);
+			if(this.parentsUnlocked(seeds[i])) {
+				this.config.savedPlot=this.buildMutationPlotData(seeds[i]);
 			}
 			break;
 		}

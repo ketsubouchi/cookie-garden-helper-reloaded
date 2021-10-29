@@ -17,6 +17,12 @@ garden / farms. There, you can configure how you would like the mod to operate.
 The mod loops through each unlocked tile, then tries to auto-harvest
 or auto-plant, depending on what is activated.
 
+### Full-Auto
+Turn ON auto-harvest, auto-plant, and  auto plot.
+Plot and setting will be set automatically to complete all seeds.
+Caution 1: Total seed cost is several million CPS.
+Caution 2: You should unlock JQB and Duketator by manual savescumming.
+Because these steps take very long time.
 ### Auto-harvest
 
 First, it will check if the tile is empty.
